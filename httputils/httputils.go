@@ -24,8 +24,10 @@ func PostRequest(postStruct interface{}, URL string, headers map[string]string) 
 	}
 	req.Header.Set("Content-Type", "application/json")
 
-	for k, v := range headers {
-		req.Header.Set(k, v)
+	if headers != nil {
+		for k, v := range headers {
+			req.Header.Set(k, v)
+		}
 	}
 
 	// send json with new secrets to vault
