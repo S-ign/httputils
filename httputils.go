@@ -3,7 +3,6 @@ package httputils
 import (
 	"bytes"
 	"encoding/json"
-	"fmt"
 	"io"
 	"net/http"
 )
@@ -15,7 +14,7 @@ import (
 func PostRequest(postStruct interface{}, URL string, headers map[string]string) (b []byte, err error) {
 	postData, err := json.Marshal(postStruct)
 	if err != nil {
-		fmt.Println(err)
+		return nil, err
 	}
 
 	req, err := http.NewRequest("POST", URL, bytes.NewBuffer(postData))
